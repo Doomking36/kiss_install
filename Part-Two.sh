@@ -81,33 +81,13 @@ kiss_install() {
 
 # Browse linux kernel using elinks
 fetch_linux_kernel() {
-    # Check if elinks is installed
-    if ! command -v elinks &>/dev/null; then
-        dialog --msgbox "Elinks is not installed. Please install elinks and try again." 6 50
+
+    dialog --infobox "Downloading Linux kernel 6.16.10..." 3 40
+    if ! curl --output kiss.xz --fail https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.10.tar.xz; then
+        dialog --title "Error" --msgbox "Failed to download the Linux kernel. Check your internet connection." 6 50
         return
     fi
 
-    # Check if dialog is installed
-    if ! command -v dialog &>/dev/null; then
-        echo "Dialog is not installed. Please install dialog and try again."
-        return
-    fi
-
-    # Prompt the user to visit the kernel website using elinks
-    dialog --yesno "Would you like to open elinks to browse and download Linux kernel?" 7 60
-    response=$?
-    case $response in
-        0) 
-            dialog --msgbox "Use elinks to browse to 'https://www.kernel.org/' and download the desired kernel version. The downloaded file will be saved to the current directory." 8 70
-            elinks https://www.kernel.org/
-            ;;
-        1) 
-            dialog --msgbox "Operation canceled." 6 50
-            ;;
-        255) 
-            dialog --msgbox "Operation canceled." 6 50
-            ;;
-    esac
 }
 
 
