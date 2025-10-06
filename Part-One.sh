@@ -158,13 +158,6 @@ start_installation() {
         return
     fi
 
-    # Setting up Kiss
-    dialog --infobox "Setting up Kiss" 3 50
-    if ! chmod u+s /mnt/usr/bin/busybox-suid; then
-        dialog --title "Error" --msgbox "Failed to set permissions for busybox-suid." 6 50
-        return
-    fi
-
     dialog --title "Installation Complete" --msgbox "KISS chroot environment has been successfully installed and set up on /mnt." 6 50
 }
 
