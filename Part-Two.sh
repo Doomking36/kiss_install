@@ -93,11 +93,6 @@ fetch_linux_kernel() {
 
 # Essential kernel configuration
 essential_kernel_config() {
-    # Check if dialog is installed
-    if ! command -v dialog &>/dev/null; then
-        echo "Dialog is not installed. Please install dialog and try again."
-        return
-    fi
 
     # Ask for the path to the kernel .config file
     exec 3>&1
