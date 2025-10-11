@@ -398,7 +398,7 @@ grub_install() {
         dialog --msgbox "GRUB installed successfully for BIOS on $DEVICE." 6 50
     elif [ "$SYSTEM_TYPE" == "2" ]; then
         # UEFI system type
-        grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=kiss
+        grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=kiss --removable
         grub-mkconfig -o /boot/grub/grub.cfg
         dialog --msgbox "GRUB installed successfully for UEFI on $DEVICE." 6 50
     else
