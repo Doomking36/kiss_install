@@ -83,7 +83,7 @@ kiss_install() {
 fetch_linux_kernel() {
 
     dialog --infobox "Downloading Linux kernel 6.16.10..." 3 40
-    if ! curl --output kiss.xz --fail https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.10.tar.xz; then
+    if ! curl --output linux.xz --fail https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.10.tar.xz; then
         dialog --title "Error" --msgbox "Failed to download the Linux kernel. Check your internet connection." 6 50
         return
     fi
